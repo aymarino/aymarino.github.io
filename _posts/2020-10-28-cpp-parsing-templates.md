@@ -3,7 +3,9 @@ layout: post
 title: A C++ Parsing Brain Teaser
 ---
 
-```cpp
+Feast your mind on this otherworldly C++:
+
+~~~ cpp
 template <int>
 struct X {
     int a[2];
@@ -38,7 +40,7 @@ int main() {
     X<C<sizeof(yy)>::Data<0>::Foo> yy;
     X<C<sizeof(yy)>::Data<0>::Foo> yy; // Is this well-formed? What does it do?
 }
-```
+~~~
 
 This snippet is a favorite of mine.
 It reads like a mystery-horror-thriller, where seemingly-irrelevant details fall into place right at the big reveal.
@@ -57,16 +59,16 @@ The key C++ concepts at play here are explicit template specialization, expressi
 
 The focus will be on these two statements:
 
-```cpp
+~~~ cpp
 X<C<sizeof(yy)>::Data<0>::Foo> yy; // S1
 X<C<sizeof(yy)>::Data<0>::Foo> yy; // S2
-```
+~~~
 
 ### Statement S1
 
 Let's explode this statement into its components:
 
-```cpp
+~~~ cpp
 X
 <
   C
@@ -83,7 +85,7 @@ X
 >
 
 yy
-```
+~~~
 
 C++ parses left-to-right (top-to-bottom, if thinking about this as an AST).
 It makes local decisions about the meaning of tokens based on the proceeding tokens and name lookup, not requiring arbitrary lookahead (though maybe requiring arbitrary template instantiations).
@@ -93,7 +95,7 @@ The entire expression `C<sizeof(yy)>::Data<0>::Foo` is the single template argum
 
 Similarly, we proceed for `C`: lookup finds a template name, so `<` starts another template argument list, with single argument `sizeof(yy)`.
 
-In `sizeof(yy)`, `yy` resolves to the global variable `yy` (names do not come into scope until after their complete declaration [1]). So, `sizeof(yy) == sizeof(Y<0>)`.
+In `sizeof(yy)`, `yy` resolves to the global variable `yy` (names do not come into scope until after their complete declaration \[[^1]\]). So, `sizeof(yy) == sizeof(Y<0>)`.
 
 Clearly, `C<sizeof(yy)>` will be an instantiation of the explicit instantiation on line **x** of the complete snippet.
 So, lookup of `C<sizeof(yy)>::Data` finds the nested class defined in that instantiation of `C`, which is a template so the following `<` begins a template argument list.
@@ -114,7 +116,7 @@ Let's collapse `C<sizeof(yy)>::Data` -> `0` and look at the whole statement agai
 
 Or, expanded:
 
-```cpp
+~~~ cpp
 X
 <
   0
@@ -125,7 +127,7 @@ X
 Foo
 >
 yy
-```
+~~~
 
 Now, the `<` token which previously started a template argument list is a less-than token in a binary expression `0 < 0 == false`.
 The next `>` (which above closed the template argument list of `Data`) now closes the template argument list of `X`.
@@ -137,4 +139,4 @@ Since `false` converts to `0`, we now have `X<0>::Foo > yy`.
 `X<0>` (the type of `yy`) has defined a global `operator >` which takes `int` on the left-hand-side, and returns void.
 Hence, this statement is a function call expression to that operator.
 
-[1] But before their optional initializer.
+[^1]: But before their optional initializer.

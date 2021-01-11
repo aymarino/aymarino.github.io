@@ -90,7 +90,7 @@ The `auto` return type is useful here because it allows un-bundling the two argu
 
 I absolutely do not recommend writing code like this. It's horribly convoluted and further, will absolutely be generating worse optimized code. This was our original branchless implementation under LLVM's `-O3`:
 
-~~~ asm
+~~~ nasm
 branchless_max(int, int):                   # @branchless_max(int, int)
         mov     eax, edi
         mov     ecx, edi
@@ -104,7 +104,7 @@ branchless_max(int, int):                   # @branchless_max(int, int)
 
 This is after taking into account overflow and underflow (this instantiation on two 64-bit integer types, but the assembly is identical up to bit shifts with other sized parameters):
 
-~~~ asm
+~~~ nasm
 auto generic_branchless_max<long long, long long>(long long, long long):  # @auto generic_branchless_max<long long, long long>(long long, long long)
         mov     rax, rdi
         sub     rax, rsi
@@ -137,7 +137,7 @@ auto generic_branchless_max<long long, long long>(long long, long long):  # @aut
 
 And here is our original, branchy implementation (`a > b ? a : b`):
 
-~~~ asm
+~~~ nasm
 max(int, int):                               # @max(int, int)
         mov     eax, esi
         cmp     edi, esi

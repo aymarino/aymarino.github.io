@@ -6,7 +6,7 @@ layout: default
   {% for post in site.posts %}
     <article class="post">
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title | markdownify }}</a></h1>
-      <p class="date">{{ post.date | date_to_long_string }}</p>
+      <p class="date">{{ post.date | date: "%B %e, %Y" }}</p>
     </article>
   {% endfor %}
 </div>

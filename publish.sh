@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 git checkout master
 git push
 git checkout gh-pages

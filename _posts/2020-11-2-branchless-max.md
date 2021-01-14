@@ -61,7 +61,7 @@ int branchless_max_overunder(int a, int b) {
 }
 ~~~
 
-As a bonus, we can now generalize the parameters and return type for any signed integral type using C++20 concepts.:
+As a bonus, we can now generalize the parameters and return type for any signed integral type using C++20 concepts:
 
 ~~~ cpp
 #include <concepts>

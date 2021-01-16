@@ -3,10 +3,9 @@ layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title | markdownify }}</h1>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+  <div class="title">
+    <h1>{{ page.title | markdownify | remove: '<p>' | remove: '</p>' | strip_newlines }}</h1>
+    <div class="date">{{ page.date | date: "%F" }}</div>
   </div>
 
   <div class="entry">

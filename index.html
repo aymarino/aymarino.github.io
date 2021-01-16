@@ -5,7 +5,7 @@ layout: default
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
-      {{ post.date | date: "%F" }} &mdash;
+      <span class="date">{{ post.date | date: "%F" }}</span> &mdash;
       <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title | markdownify | remove: '<p>' | remove: '</p>' | strip_newlines }}
       </a>

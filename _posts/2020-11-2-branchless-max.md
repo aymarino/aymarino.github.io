@@ -3,9 +3,12 @@ layout: post
 title: Branchless `max()`
 ---
 
-Recently a colleague posed a question he'd gotten in an interview: write `max()` without branches.
+Recently a coworker told me about a question he'd gotten in an interview: write `max()` without branches.
 
-Branchless programming is somewhat of a category of programming challenges similar to code golf, though occasionally with real utility. If done in a non-trivial way, it could create an algorithm implementation that out-performs a "branchy" implementation on heavily-pipelined CPUs in hot paths.
+Branchless programming strikes me as similar "game" to code golf (writing a program in as few lines or characters as possible), though occasionally it has real utility. 
+For example, if the branchless program is a non-trivial transformation, it could out-perform a "branchy" implementation on heavily-pipelined CPUs in hot paths.
+
+Let's start with the trivial, "branchy" implementation:
 
 ~~~ cpp
 int branchy_max(int a, int b) {
@@ -13,9 +16,11 @@ int branchy_max(int a, int b) {
 }
 ~~~
 
-For simple enough programs that have conditional computations or behavior, the general strategy is create a value that encodes the condition as either 1 or 0, and the multiply the input values by this conditional value in a way that produces the desired computation in both cases.
+For simple enough programs that have conditional computations, the general strategy of branchless programming is to create a value that encodes the condition as either a 1 or 0, then multiply it with the input values in a way that computes the result in both cases of the condition.
 
-The condition in this case is `a > b`. Notice that transforming this into `a - b` gives a positive value if the condition is true and negative otherwise. We can detect this by masking the sign bit, which is only set if the difference is negative:
+The condition in this case is `a > b`.
+Notice that transforming this into `a - b` gives a positive value if the condition is true and negative otherwise.
+We can detect which it is by masking the sign bit of the difference, which is only set if it's negative:
 
 ~~~ cpp
 auto difference = a - b;
@@ -23,8 +28,9 @@ constexpr auto sign_bit = sizeof(decltype(difference)) * 8 - 1;
 int b_greater_than_a = (difference >> sign_bit) & 1;
 ~~~
 
-Now we need to find an expression that evaluates to `b` if `b_greater_than_a == 1`, and `a` if it is 0.
-Adding the conditional difference to `b` achieves this: `a - (a - b) * b_greater_than_a == a - (a - b) * 1 == b` if `b_greater_than_a == 1`, and `b - (a - b) * b_greater_than_a == a - (a - b) * 0 == a` if `b_greater_than_a == 0`.
+Now we need to find an expression that evaluates to `b` if the difference is negative, and `a` if it is positive.
+
+Adding the conditional difference to `b` achieves this: `a - (a - b) * b_greater_than_a`. If the difference is negative, we have `a - (a - b) * 1 == b`, and `a - (a - b) * 0 == a` otherwise.
 
 Putting it together:
 
@@ -37,9 +43,11 @@ int branchless_max(int a, int b) {
 }
 ~~~
 
-For the purpose of a thought exercise this is good. But it's not quite correct across its input range: `a - b` could underflow, say if `a` is negative and `b` is large, or conversely overflow if `b` is a large negative and `a` is positive.
+For the purpose of a thought exercise this is good.
+But it's not quite correct across its input range: `a - b` could underflow, say if `a` is negative and `b` is a large positive number, or conversely overflow if `b` is a large negative and `a` is positive.
 
-Let's update this to detect and correct these cases. We can detect an underflow if `a` is negative and `b` is positive, but `difference` is positive; similarly, overflow happens iff `a` is positive and `b` is negative, but `difference` is negative. Then, we can adjust the result to force it to the true max input:
+We can detect an underflow if `a` is negative and `b` is positive, but `difference` is positive; similarly, overflow happens iff `a` is positive and `b` is negative, but `difference` is negative.
+Then, we can adjust the result to force it to the true max input:
 
 ~~~ cpp
 int branchless_max_overunder(int a, int b) {
@@ -86,9 +94,10 @@ auto generic_branchless_max(T a, U b) {
 }
 ~~~
 
-The `auto` return type is useful here because it allows un-bundling the two arguments into separate template parameter types, so that things like `generic_branchless_max(2ll, 2)` work, with the return type doing the necessary promotion and sign-extension.
+The `auto` return type is useful here because it allows un-bundling the two arguments into separate template parameter types, so that things like `generic_branchless_max(2LL, 2)` work, with the return type doing the necessary promotion and sign-extension.
 
-I absolutely do not recommend writing code like this. It's horribly convoluted and further, will absolutely be generating worse optimized code. This was our original branchless implementation under LLVM's `-O3`:
+I absolutely do not recommend writing code like this. It's convoluted and will almost certainly generate worse optimized code.
+This was our original branchless implementation under LLVM's `-O3`:
 
 ~~~ nasm
 branchless_max(int, int):                   # @branchless_max(int, int)
@@ -102,7 +111,8 @@ branchless_max(int, int):                   # @branchless_max(int, int)
         ret
 ~~~
 
-This is after taking into account overflow and underflow (this instantiation on two 64-bit integer types, but the assembly is identical up to bit shifts with other sized parameters):
+The code generated for taking into account overflow and underflow is much worse.
+This is the instantiation on two 64-bit integer types, but the assembly is identical (up to bit shifts) with other sized parameters:
 
 ~~~ nasm
 auto generic_branchless_max<long long, long long>(long long, long long):  # @auto generic_branchless_max<long long, long long>(long long, long long)

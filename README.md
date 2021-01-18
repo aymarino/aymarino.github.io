@@ -1,5 +1,5 @@
 # aymarino - Blog
 
-[Blog!](aymarino.github.io/blog)
+[Blog!](aymarino.github.io/)
 
 Template modified from [Jekyll Now](https://github.com/barryclark/jekyll-now).

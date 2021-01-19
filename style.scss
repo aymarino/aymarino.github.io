@@ -25,7 +25,7 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 770px;
   padding: 0 10px;
   width: 100%;
 }
@@ -109,27 +109,12 @@ img {
   max-width: 100%;
 }
 
-// Fixes images in popup boxes from Google Translate
-.gmnoprint img {
-  max-width: none;
-}
-
 .title {
   margin-bottom: 30px;
 }
 
 .date {
   font-style: italic;
-}
-
-// Specify the color of the selection
-::-moz-selection {
-  color: $black;
-  background: $lightGray;
-}
-::selection {
-  color: $black;
-  background: $lightGray;
 }
 
 // Nicolas Gallagher's micro clearfix hack
@@ -152,12 +137,9 @@ img {
 // .masthead
 //
 
-.wrapper-masthead {
-  margin-bottom: 20px;
-}
-
 .masthead {
   padding: 20px 0;
+  margin-bottom: 20px;
   border-bottom: 1px solid $lightGray;
 
   @include mobile {
@@ -193,7 +175,7 @@ img {
 }
 
 .site-name {
-  margin: 0;
+  margin-top: 11px; // @TODO: Vertically middle align
   color: $darkGray;
   cursor: pointer;
   font-family: $helveticaNeue;
@@ -202,20 +184,11 @@ img {
   letter-spacing: 1px;
 }
 
-.site-description {
-  margin: -5px 0 0 0;
-  color: $gray;
-  font-size: 16px;
-
-  @include mobile {
-    margin: 3px 0;
-  }
-}
-
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
+  font-weight: 300;
   font-size: 18px;
 
   @include mobile {
@@ -229,7 +202,6 @@ nav {
     margin-left: 20px;
     color: $darkGray;
     text-align: right;
-    font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {

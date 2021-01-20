@@ -5,7 +5,7 @@ layout: default
 <article class="post">
   <div class="title">
     <h1>{{ page.title | markdownify | remove: '<p>' | remove: '</p>' | strip_newlines }}</h1>
-    <div class="date">{{ page.date | date: "%F" }}</div>
+    <div class="date">{{ page.date | date: "%B %e, %Y" }}</div>
   </div>
 
   <div class="entry">

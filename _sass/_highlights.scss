@@ -2,9 +2,9 @@
 div.highlight {
   background-color: #002b36;
   padding: 7px 7px 7px 10px;
+  border: 1px solid #ddd;
   margin: 20px 0 20px 0;
-  overflow: scroll;
-  clear: both;
+  overflow: auto;
 }
 
 code {

@@ -5,8 +5,10 @@ title: Branchless `max()`
 
 Recently a coworker told me about a question he'd gotten in an interview: write `max()` without branches.
 
-Branchless programming strikes me as similar "game" to code golf (writing a program in as few lines or characters as possible), though occasionally it has real utility. 
-For example, if the branchless program is a non-trivial transformation, it could out-perform a "branchy" implementation on heavily-pipelined CPUs in hot paths.
+Branchless programming strikes me as a similar "game" to code golf (writing a program in as few lines or characters as possible), though occasionally it has real utility. 
+For example, if the branchless program is a non-obvious-enough transformation, it could [out-perform](https://dev.to/jacqueslucke/a-c-micro-optimization-exercise-3p65) a "branchy" implementation in a heavily-pipelined CPU.
+
+### "Branchy" `max`
 
 Let's start with the trivial, "branchy" implementation:
 
@@ -15,6 +17,10 @@ int branchy_max(int a, int b) {
     return a > b ? a : b;
 }
 ~~~
+
+Nothing to it, right?
+
+### An approximate branchless implementation
 
 For simple enough programs that have conditional computations, the general strategy of branchless programming is to create a value that encodes the condition as either a 1 or 0, then multiply it with the input values in a way that computes the result in both cases of the condition.
 
@@ -43,6 +49,8 @@ int branchless_max(int a, int b) {
 }
 ~~~
 
+### Accounting for overflow & underflow
+
 For the purpose of a thought exercise this is good.
 But it's not quite correct across its input range: `a - b` could underflow, say if `a` is negative and `b` is a large positive number, or conversely overflow if `b` is a large negative and `a` is positive.
 
@@ -68,6 +76,8 @@ int branchless_max_overunder(int a, int b) {
            + underflow * b + overflow * a;
 }
 ~~~
+
+### Genericizing & C++20
 
 As a bonus, we can now generalize the parameters and return type for any signed integral type using C++20 concepts:
 
@@ -95,6 +105,8 @@ auto generic_branchless_max(T a, U b) {
 ~~~
 
 The `auto` return type is useful here because it allows un-bundling the two arguments into separate template parameter types, so that things like `generic_branchless_max(2LL, 2)` work, with the return type doing the necessary promotion and sign-extension.
+
+### Results
 
 I absolutely do not recommend writing code like this. It's convoluted and will almost certainly generate worse optimized code.
 This was our original branchless implementation under LLVM's `-O3`:

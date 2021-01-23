@@ -3,7 +3,10 @@ layout: post
 title: A C++ Parsing Brain Teaser
 ---
 
-Feast your mind on this otherworldly C++:
+C++ is already notorious for the insane context-dependence of its grammar, which is, yes, [Turing-complete](http://port70.net/~nsz/c/c%2B%2B/turing.pdf), and yes, even [undecidable](http://yosefk.com/c++fqa/web-vs-c++.html#misfeature-2).
+This is all [old](https://stackoverflow.com/questions/794015/what-do-people-mean-when-they-say-c-has-undecidable-grammar) and [talked](https://blog.reverberate.org/2013/08/parsing-c-is-literally-undecidable.html) about to [death](https://medium.com/@mujjingun_23509/full-proof-that-c-grammar-is-undecidable-34e22dd8b664).
+
+And yet, consider this otherworldly C++:
 
 ~~~ cpp
 template <int>

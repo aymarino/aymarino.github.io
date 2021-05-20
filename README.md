@@ -11,3 +11,5 @@ Template modified from [Jekyll Now](https://github.com/barryclark/jekyll-now).
 ```sh
 sudo docker run -p 4000:4000 --volume="$PWD:/srv/jekyll" -it jekyll/builder:3.8 jekyll serve
 ```
+
+* Convert .heic images to .jpg: `mogrify -format jpg *.heic`

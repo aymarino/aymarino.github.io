@@ -1,11 +1,15 @@
 ---
 layout: gallery
 title: Mt. Rainier
+gallery_id: rainier
 ---
-{% assign gallery_id = page.url | split: "/" | last %}
 
 Rainier!
 
-Training hikes with cans of Rainier (not named after the mountain!):
+Training hikes with cans of Rainier:
 
-{% include image-gallery.html gallery_id=gallery_id set_id="beer" %}
+<div class="image-gallery">
+{% include gallery-img.html img="beer-1.jpg" caption="Mailbox Peak" %}
+{% include gallery-img.html img="beer-2.jpg" caption="Alta Mtn." %}
+{% include gallery-img.html img="beer-3.jpg" caption="Mt. Si" %}
+</div>

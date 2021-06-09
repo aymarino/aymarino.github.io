@@ -1,0 +1,11 @@
+
+{% assign thumb_suffix = "-thumb." %}
+{% assign gallery_path = "/images/" | append: page.gallery_id | append: "/" %}
+{% assign img_path = gallery_path | append: include.img %}
+{% assign basename = include.img | split: "." | first %}
+{% assign ext = include.img | split: "." | last %}
+{% assign thumb_filename = basename | append: thumb_suffix | append: ext %}
+{% assign thumb_path = gallery_path | append: thumb_filename %}
+<a href="{{ img_path }}" title="{{ include.caption }}">
+  <img src="{{ thumb_path }}"/>
+</a>

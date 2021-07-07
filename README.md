@@ -4,6 +4,13 @@
 
 Template modified from [Jekyll Now](https://github.com/barryclark/jekyll-now).
 
+## Installation
+
+```sh
+sudo apt-get install ruby-full build-essential zlib1g-dev
+sudo gem install jekyll bundler
+```
+
 ## Notes
 
 * Run in Ubuntu [docker container](https://hub.docker.com/r/jekyll/jekyll/):

@@ -4,10 +4,9 @@ title: Mt. Rainier
 gallery_id: rainier
 ---
 
-## Training
+Here I catalogue my preparations and experience climbing Mt. Rainier.
 
-Rainier is a tough physical endeavor.
-I prepared, both physically and mentally, for a tough climb but it still exceeded my expectations for difficulty.
+## Training
 
 Roughly my training consisted of:
 
@@ -16,13 +15,17 @@ Roughly my training consisted of:
 * Mt. Washington
 * Alta Mtn.
 * Enchantments 1-day thru-hike
-  * This was a mistake.
-  Both Michael and I fucked up our knees doing this.
+  * This one was a mistake; both Michael and I fucked up our knees doing this.
 * Navaho Peak
-* Lots of regular running & weight exercises
+* Regular running & free weight exercises
 
-For each of the above, I used a weighted pack, filled with approx. 25 lbs in water and whatever other heavy gear I could find.
+For each of the above, except for the Enchantments, I used a weighted pack filled with approx. 25 lbs in water and whatever other heavy gear I could find.
 Usually that included Rainiers!
+
+On the topic of the Enchantments hike, both myself and Michael (a friend also on our climb) ended up with some extraordinary knee pain after.
+Michael had prior issues with one of his knees, and essentially re-opened a preexisting injury, but I had not and it was new.
+I ended up seeing a sports medicine doctor who diagnosed it as strain caused by weakness in hip muscles which stabilize the knee joint on downhill impacts, and perscribed physical therapy, though I didn't end up seeing the PT until after the climb.
+Overall, it was just a bad choice for Rainier, since there was a period I was not sure my knee would recover in time.
 
 ```
 TODO: pics from other training hikes, like Enchantments and Navaho.

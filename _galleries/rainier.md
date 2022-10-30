@@ -55,7 +55,7 @@ A single, much longer hike through the Enchantments I did without extra weight:
 {% include gallery-img.html img="day2-03.jpg" caption="View across Cowlitz Glacier, with Camp Muir on the right" %}
 {% include gallery-img.html img="day2-04.jpg" caption="Resting at Cathedral Gap" %}
 {% include gallery-img.html img="day2-05.jpg" caption="Ingraham Flats approaching the next camp site" %}
-{% include gallery-img.html img="day2-06.jpg" caption="View from camp, looking towards the summit" %}
+{% include gallery-img.html img="day2-06.jpg" caption="View from camp, looking towards the summit. Disappointment Cleaver on the right." %}
 {% include gallery-img.html img="day2-07.jpg" caption="The crew before bed. Moscow Mules in our mugs" %}
 </div>
 
@@ -64,11 +64,11 @@ A single, much longer hike through the Enchantments I did without extra weight:
 The summit climb started at midnight, and reached the summit around sunrise, so no pictures from the climb itself.
 
 <div class="image-gallery">
-{% include gallery-img.html img="day3-01.jpg" %}
-{% include gallery-img.html img="day3-02.jpg" %}
-{% include gallery-img.html img="day3-03.jpg" %}
-{% include gallery-img.html img="day3-04.jpg" %}
-{% include gallery-img.html img="day3-05.jpg" %}
+{% include gallery-img.html img="day3-01.jpg" caption="Resting on the summit, in the caldera" %}
+{% include gallery-img.html img="day3-02.jpg" caption="At Columbia ridge, the highest point" %}
+{% include gallery-img.html img="day3-03.jpg" caption="Columbia ridge" %}
+{% include gallery-img.html img="day3-04.jpg" caption="Group making its way back across the caldera. Smoky sunrise" %}
+{% include gallery-img.html img="day3-05.jpg" caption="Steam vents from geothermal activity" %}
 </div>
 
 ## Day 3: Descent
@@ -78,10 +78,10 @@ The summit climb started at midnight, and reached the summit around sunrise, so 
 {% include gallery-img.html img="day3-07.jpg" %}
 {% include gallery-img.html img="day3-08.jpg" %}
 {% include gallery-img.html img="day3-09.jpg" %}
-{% include gallery-img.html img="day3-10.jpg" %}
-{% include gallery-img.html img="day3-11.jpg" %}
-{% include gallery-img.html img="day3-12.jpg" %}
+{% include gallery-img.html img="day3-10.jpg" caption="The Fin -- an ice ridge with fixed lines our route went across" %}
+{% include gallery-img.html img="day3-11.jpg" caption="Another view of the Fin" %}
+{% include gallery-img.html img="day3-12.jpg" caption="Crossing the Fin" %}
 {% include gallery-img.html img="day3-13.jpg" %}
-{% include gallery-img.html img="day3-14.jpg" %}
-{% include gallery-img.html img="day3-15.jpg" %}
+{% include gallery-img.html img="day3-14.jpg" caption="Resting at the top of Disappointment Cleaver" %}
+{% include gallery-img.html img="day3-15.jpg" caption="Looking back up at the mountain from the Skyline trail, near the parking lot" %}
 </div>

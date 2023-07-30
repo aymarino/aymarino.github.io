@@ -13,6 +13,7 @@ sudo gem install jekyll bundler
 
 ## Notes
 
+* Run without container (with `jekyll` installed): `jekyll serve`
 * Run in Ubuntu [docker container](https://hub.docker.com/r/jekyll/jekyll/):
 
 ```sh

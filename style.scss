@@ -107,6 +107,10 @@ strong, b {
 
 img {
   max-width: 100%;
+
+  // Horizontally center images
+  display: block;
+  margin: auto;
 }
 
 .title {
@@ -244,6 +248,11 @@ nav {
     margin: 0 0;
     font-size: 15px;
   }
+}
+
+// Add an extra margin at the bottom of the blog post content.
+.post-body {
+  margin-bottom: 50px;
 }
 
 .image {

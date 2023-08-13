@@ -30,8 +30,12 @@
         <nav>
           <a href="{{ site.baseurl }}/about">About</a>
           <a href="{{ site.baseurl }}/gallery">Gallery</a>
-          {% if site.links.github %}<a href="https://github.com/{{ site.links.github }}">GitHub</a>{% endif %}
-          {% if site.links.linkedin %}<a href="https://www.linkedin.com/in/{{ site.links.linkedin }}">LinkedIn</a>{% endif %}
+          <a href="https://github.com/{{ site.links.github }}">
+            {%- include social-item.html key = 'github' -%}
+          </a>
+          <a href="https://www.linkedin.com/in/{{ site.links.linkedin }}">
+            {%- include social-item.html key = 'linkedin' -%}
+          </a>
         </nav>
       </header>
     </div>

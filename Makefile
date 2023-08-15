@@ -1,5 +1,5 @@
 
-JEKYLL_CMD = jekyll serve --drafts
+JEKYLL_CMD = bundle exec jekyll serve --drafts
 IMAGE_DIR = images
 
 thumbs:

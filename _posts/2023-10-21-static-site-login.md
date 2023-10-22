@@ -193,7 +193,7 @@ In the `Set-Cookie` header, the attributes are necessary or important for modern
   not matter, but setting it prevents the default behavior of the browser clearing the cookie when
   the session is over.
 
-### Protected resource handler
+### Authenticating token
 
 Now when the client authenticates, it gets a cookie containing the signed JWT access token, and is
 redirected to the domain root -- the page we want to require authentication to access. So, accessing
@@ -254,7 +254,7 @@ function redirectToLogin(host, callback) {
 }
 ```
 
-That's it! The whole flow for authentication looks like this:
+That's it! The whole flow for login and authentication looks like this:
 
 ```mermaid
 sequenceDiagram
@@ -288,8 +288,51 @@ AuthnFn ->> S3: GET secret.html
 S3 ->> Client: secret.html
 ```
 
-The complete code for the Lambda handlers can be found on Github:
-[aymarino/static-site-login](https://github.com/aymarino/static-site-login).
+### Implementing logout
+
+Since the token is stored as a cookie, logout in this setup is as simple as clearing that cookie.
+But, since the cookie is `HttpOnly`, it can only be cleared by receiving a response from the domain
+with an empty `Set-Cookie` header.
+
+One could created a separate route (e.g. `/logout`) for this purpose, but my hacky solution is to
+put that funcitonality under an unused HTTP method on the existing `/login` handler:
+
+```js
+exports.handler = (event, _context, callback) => {
+  const request = event.Records[0].cf.request;
+  switch (request.method) {
+    // ... not shown: GET/POST handlers ...
+    case "DELETE": // logout
+      const response = {
+        status: "200",
+        statusDescription: "OK",
+        headers: {},
+      };
+      setTokenCookie(response, ""); // Clear cookie
+      callback(null, response); // Redirect to login.html
+      break;
+  }
+};
+```
+
+Then in the static site client, logout is just sending a `DELETE` HTTP request to the login route,
+then redirecting:
+
+```html
+<button
+  onclick="
+    fetch('/login.html', { method: 'DELETE' })
+    .then((_) => { window.location.href = '/login.html' });
+  "
+>
+  Logout
+</button>
+```
+
+## Code and deployment samples
+
+The complete code for the Lambda handlers, and example scripts for how I deploy them, can be found
+on Github: [aymarino/static-site-login](https://github.com/aymarino/static-site-login).
 
 <hr/>
 

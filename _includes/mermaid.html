@@ -1,0 +1,16 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.min.js"
+  integrity="sha512-iijJgrEzF9HfJJ8GKxnZdTeXd+UelEAfRfe8eFP6zoF0FmcB0HCJlYYj9DnVxcSfhB77iBVeoHfpfxv+pXO8Ig=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script>
+  window.addEventListener("load", () => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+    });
+    window.mermaid.init(
+      undefined,
+      document.querySelectorAll(".language-mermaid")
+    );
+  });
+</script>

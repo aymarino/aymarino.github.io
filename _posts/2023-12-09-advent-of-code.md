@@ -1,12 +1,14 @@
 ---
 layout: post
-title: Things I learned from Advent of Code 2023
+title: "Advent of Code 2023 Day 9: Lagrange interpolation where `x={0, 1, ..., i}`"
 ---
 
 {% include katex.html %}
 
-This post won't fully explain any problems or solutions from AOC, it will just focuses on little
-things I learned about algorithms or Rust programming from doing the problems this year.
+This is part of a series on little things I learned while doing the problems from
+[Advent of Code 2023](https://adventofcode.com/2023). It won't fully explain any problems or
+solutions from AOC. You can find all my solutions on
+[Github](https://github.com/aymarino/advent-of-code-2023).
 
 ## Day 9
 
@@ -31,45 +33,57 @@ the right side, i.e. \\(0 \leq i \lt n\\), as most ranges in programming work.
 
 So, taking the formula for the Lagrange polynomial:
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 
 $$ P(x) = \sum_{j = 0}^{n} y_j \prod_{i, i \neq j}^{n} \frac{x - x_i}{x_j - x_i} $$
 
+<!-- prettier-ignore-end -->
+
 and substituting that \\(x_i = i\\) and that we want to calculate \\(P(n)\\):
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 
 $$ P(n) = \sum_{j = 0}^{n} y_j \prod_{i, i \neq j}^{n} \frac{n - i}{j - i} $$
 
-What stands out is that, so long as \\(n\\) is constant between each set of inputs (i.e. the number of
-\\(y_i\\) in each line of the input file is the same), we can pre-compute and re-use the co-efficients
-given by the \\(\prod\\), call those \\(C_j\\), so that the formula becomes a dot-product:
+<!-- prettier-ignore-end -->
 
-<!-- prettier-ignore -->
+What stands out is that, so long as \\(n\\) is constant between each set of inputs (i.e. the number
+of \\(y_i\\) in each line of the input file is the same), we can pre-compute and re-use the
+co-efficients given by the \\(\prod\\), call those \\(C_j\\), so that the formula becomes a
+dot-product:
+
+<!-- prettier-ignore-start -->
 
 $$ P(n) = \sum_{j = 0}^{n} y_j C_j = [Y] \cdot [C] $$
+
+<!-- prettier-ignore-end -->
 
 for each line of the input, \\([Y]\\).
 
 One further, very interesting step was given in a solution on
 [reddit](https://old.reddit.com/r/adventofcode/comments/18e5ytd/2023_day_9_solutions/kclmyaa/):
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 
-$$ \prod_{i, i \neq j}^{n} \frac{n - i}{j - i} = \frac{\prod_i n - i}{\prod_i j - i} =
-\frac{\frac{n!}{n - j}}{(n - 1 - j)!(j!)(-1)^{n - 1 - j}} $$
+$$ C_j = \prod_{i, i \neq j}^{n} \frac{n - i}{j - i} = \frac{\prod_i n - i}{\prod_i j - i} =
+\frac{\frac{n!}{n - j}}{(n - 1 - j)!j!(-1)^{n - 1 - j}} $$
 
-Note that in the denominator, \\(i\\) is varyingly greater and less than \\(j\\), since it spans the range
-\\((0, 1, ..., j, ..., n)\\). Hence, the \\((-1)\\) factor makes the product positive or negative.
+<!-- prettier-ignore-end -->
 
-<!-- prettier-ignore -->
+Note that in the denominator, \\(i\\) is varyingly greater and less than \\(j\\), since it spans the
+range \\((0, 1, ..., j, ..., n)\\). Hence, the \\((-1)\\) factor makes the product positive or
+negative.
 
-$$ = (-1)^{n - 1 - j} \frac{n!}{(n - j)!(j!)} = (-1)^{n - 1- j} {n \choose j} $$
+<!-- prettier-ignore-start -->
+
+$$ = (-1)^{n - 1 - j} \frac{n!}{(n - j)!j!} = (-1)^{n - 1- j} {n \choose j} $$
+
+<!-- prettier-ignore-end -->
 
 So the polynomial coefficients to the Lagrange can in fact be expressed as a combination, when
-\\(x_i = i\\). This is particularly useful for programming the solution, since it eliminates the need to
-deal with lossy floating point arithmetic (although it does require 128-bit integer math for the
-factorial).
+\\(x_i = i\\). This is particularly useful for programming the solution, since it eliminates the
+need to deal with lossy floating point arithmetic (although it does require 128-bit integer math for
+the factorial).
 
 The programmed solution, written in Rust, is on my
 [Github](https://github.com/aymarino/advent-of-code-2023/blob/8068d4063d5158a0a4d67b54fdb970abeec22a5b/src/day9.rs#L56-L57).

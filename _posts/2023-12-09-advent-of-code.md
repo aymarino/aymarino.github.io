@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Advent of Code 2023 Day 9: Lagrange interpolation where `x={0, 1, ..., i}`"
+title: "Advent of Code 2023 Day 9: Lagrange interpolation with integer points"
+categories: [aoc-2023, rust]
 ---
 
 {% include katex.html %}

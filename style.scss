@@ -220,8 +220,13 @@ nav {
 //
 
 .posts > .post {
+  display: grid;
+  grid-template-areas: 'date title' 'b tags';
+  justify-content: left;
+  row-gap: 5px;
+  column-gap: 20px;
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 0.8em;
   border-bottom: 1px solid $lightGray;
 }
 
@@ -245,8 +250,17 @@ nav {
   }
 
   .date {
+    grid-area: date;
     margin: 0 0;
     font-size: 15px;
+  }
+
+  .posts-title {
+    grid-area: title;
+  }
+
+  .posts-tags {
+    grid-area: tags;
   }
 }
 

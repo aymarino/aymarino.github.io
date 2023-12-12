@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A C++ Parsing Brain Teaser
+categories: [cpp]
 ---
 
 C++ is already notorious for the insane context-dependence of its grammar, which is, yes,

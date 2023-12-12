@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Branchless `max()`
+categories: [cpp]
 ---
 
 Recently a coworker told me about a question he'd gotten in an interview: write `max()` without

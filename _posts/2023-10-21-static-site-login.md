@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Protecting a static site behind a login page
+categories: [web]
 ---
 
 {% include mermaid.html %}

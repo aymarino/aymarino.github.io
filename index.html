@@ -5,10 +5,22 @@ layout: default
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
-      <span class="date">{{ post.date | date: "%b %Y" }}</span> &mdash;
-      <a href="{{ site.baseurl }}{{ post.url }}">
+      <span class="date">{{ post.date | date: "%b %d %Y" }}</span>
+      <span class="posts-title">
+        <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title | markdownify | remove: '<p>' | remove: '</p>' | strip_newlines }}
-      </a>
+        </a>
+      </span>
+      {% if post.categories.size != 0 %}
+        <span class="posts-tags">
+        {% for category in post.categories %}
+          <code>
+            {%- include tag.html -%}
+            <a href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
+          </code>
+        {% endfor %}
+        </span>
+      {% endif %}
     </article>
   {% endfor %}
 </div>

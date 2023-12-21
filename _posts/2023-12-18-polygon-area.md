@@ -51,7 +51,7 @@ $$ A = \lvert \frac{1}{2} \sum_{i = 1}^{n} (y_i + y_{i + 1})(x_i - x_{i+1}) \rve
 <!-- prettier-ignore-end -->
 
 The geometric intuition for why this works is that each pair of \\((x, y)\\) coordinates for \\(i\\)
-and \\(i+1\\) form a trapezoid with the \\(y\\)-axis. This trapezoid has area
+and \\(i+1\\) form a trapezoid with the \\(x\\)-axis. This trapezoid has area
 
 <!-- prettier-ignore-start -->
 
@@ -75,24 +75,33 @@ top of the shape.
 ### Pick's theorem
 
 The shoelace formula gives us to get the area with the points formed by the directions in the Advent
-of Code problem, but this is slightly different than what is asked for --- we need the number of
-squares enclosed by the shape, including the boundary.
+of Code problem, but this is different than what is asked for --- we need the number of squares
+enclosed by the shape, including the boundary.
 
 The crux of the difference between the area of the shape and the number of points in it is that a
 line of length 1 from \\((0, 0)\\) to \\((0, 1)\\) contains 2 points. So take a simple square with
-side length 1:
+side length 1, would look like this in the Advent of Code problem:
+
+```
+....
+.##.
+.##.
+....
+```
+
+but like this when the `#` coordinates are translated to points on the hypothetical cartesian plane:
 
 ![Unit square on a grid](/images/posts/unit-square.png)
 
-This clearly has area 1, but 4 boundary points.
+The points form a shape with 4 boundary points, but area 1.
 
 It turns out there's another formula relating a polygon's area \\(A\\) to the number of boundary
 points \\(b\\) and interior points \\(i\\), called _Pick's theorem_:
 
 $$ A = i + \frac{b}{2} - 1 $$
 
-In AoC day 18, we can calculate \\(A\\) and trivially compute \\(b\\) \[[^3]\], and the answer is
-the total number of points touched or enclosed by the path, \\(b + i\\):
+In AoC day 18, we can calculate \\(A\\) (using the Shoelace algorithm) and trivially compute \\(b\\)
+\[[^3]\], and the answer is the total number of points touched or enclosed by the path, \\(b + i\\):
 
 $$
 \begin{aligned}

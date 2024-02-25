@@ -62,8 +62,8 @@ $$ A = \frac{a + b}{2} h = \frac{y_i + y_{i+1}}{2} \lvert x_{i+1} - x_i \rvert $
 where \\(a\\), \\(b\\) are the lengths of the parallel sides, as usual.
 
 <!-- prettier-ignore-start -->
-These trapezoid areas are _add_ to the polygon area when \\(x_i > x_{i+1}\\) (i.e., travelling from
-\\(P_i \rightarrow P_{i+1} \\) is to the left), and _subtracts_ from the area when travelling to the
+These trapezoid areas _add_ to the polygon area when \\(x_i > x_{i+1}\\) (i.e., travelling from
+\\(P_i \rightarrow P_{i+1} \\) is to the left), and _subtract_ from the area when travelling to the
 right \[[^2]\], as illustrated via Wikipedia, below:
 <!-- prettier-ignore-end -->
 

@@ -28,8 +28,8 @@ that the runtime of the system is heavily dominated by the generation of the has
 The above architecture was what was implemented, for better or for worse. Later, a problem came up
 because in this scheme the size of the in-memory map can grow unbounded, which was starting to cause
 issues as the set of data grew. If we want to bound the memory usage, sacrificing some accuracy of
-finding duplicates, what's interesting is that the LRU-ness of the map is an emergent propery of the
-synchronization scheme: the earlier entries in the file (later if reading backwards) are
+finding duplicates, what's interesting is that the LRU-ness of the map is an emergent property of
+the synchronization scheme: the earlier entries in the file (later if reading backwards) are
 approximately the least-recently-seen elements if they weren't also present later in the file. So,
 bounding the map size is as easy as refusing to insert new hashes after reaching the size bound.
 

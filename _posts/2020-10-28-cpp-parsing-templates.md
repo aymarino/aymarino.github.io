@@ -130,9 +130,9 @@ as will `C<`. This is the first key: in `sizeof(yy)`, `yy` will now refer to the
 `X<0>` (rather than `Y<0>` as it is in the line above). So the instantiation selected for `C` is
 `C<sizeof(X<0>)>`.
 
-Now, we lookup `::Data` in the selected instantation of `C`, which is an integer static data member,
-with value `0`. Let's collapse `C<sizeof(yy)>::Data` -> `0` and look at the whole statement again:
-`X<0<0>::Foo> yy`
+Now, we lookup `::Data` in the selected instantiation of `C`, which is an integer static data
+member, with value `0`. Let's collapse `C<sizeof(yy)>::Data` -> `0` and look at the whole statement
+again: `X<0<0>::Foo> yy`
 
 Or, expanded:
 

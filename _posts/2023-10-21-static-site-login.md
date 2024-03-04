@@ -296,7 +296,7 @@ But, since the cookie is `HttpOnly`, it can only be cleared by receiving a respo
 with an empty `Set-Cookie` header.
 
 One could created a separate route (e.g. `/logout`) for this purpose, but my hacky solution is to
-put that funcitonality under an unused HTTP method on the existing `/login` handler:
+put that functionality under an unused HTTP method on the existing `/login` handler:
 
 ```js
 exports.handler = (event, _context, callback) => {

@@ -36,7 +36,7 @@ like a [flood fill](https://en.wikipedia.org/wiki/Flood_fill) algorithm, or
 count the interior points.
 
 But, in part 2 of the problem, the `n` on each direction becomes very large --- larger than is
-reasonable to use any algoirthm that is \\(O(n)\\). It turns out there is an analytical solution one
+reasonable to use any algorithm that is \\(O(n)\\). It turns out there is an analytical solution one
 can use instead, which derives the polygon area from the coordinates of its vertices.
 
 ### Shoelace formula
@@ -62,12 +62,12 @@ $$ A = \frac{a + b}{2} h = \frac{y_i + y_{i+1}}{2} \lvert x_{i+1} - x_i \rvert $
 where \\(a\\), \\(b\\) are the lengths of the parallel sides, as usual.
 
 <!-- prettier-ignore-start -->
-These trapezoid areas _add_ to the polygon area when \\(x_i > x_{i+1}\\) (i.e., travelling from
-\\(P_i \rightarrow P_{i+1} \\) is to the left), and _subtract_ from the area when travelling to the
+These trapezoid areas _add_ to the polygon area when \\(x_i > x_{i+1}\\) (i.e., traveling from
+\\(P_i \rightarrow P_{i+1} \\) is to the left), and _subtract_ from the area when traveling to the
 right \[[^2]\], as illustrated via Wikipedia, below:
 <!-- prettier-ignore-end -->
 
-[![Wikiedia illustration of the shoelace algorithm](https://upload.wikimedia.org/wikipedia/commons/8/8f/Trapez-formel-prinz.svg)](https://en.wikipedia.org/wiki/Shoelace_formula#Trapezoid_formula_2)
+[![Wikipedia illustration of the shoelace algorithm](https://upload.wikimedia.org/wikipedia/commons/8/8f/Trapez-formel-prinz.svg)](https://en.wikipedia.org/wiki/Shoelace_formula#Trapezoid_formula_2)
 
 The areas below the polygon are subtracted from the larger trapezoids formed by the points on the
 top of the shape.

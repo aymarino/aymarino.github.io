@@ -50,7 +50,7 @@ $$ P(n) = \sum_{j = 0}^{n} y_j \prod_{i, i \neq j}^{n} \frac{n - i}{j - i} $$
 
 What stands out is that, so long as \\(n\\) is constant between each set of inputs (i.e. the number
 of \\(y_i\\) in each line of the input file is the same), we can pre-compute and re-use the
-co-efficients given by the \\(\prod\\), call those \\(C_j\\), so that the formula becomes a
+coefficients given by the \\(\prod\\), call those \\(C_j\\), so that the formula becomes a
 dot-product:
 
 <!-- prettier-ignore-start -->

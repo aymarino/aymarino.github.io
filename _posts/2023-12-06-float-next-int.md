@@ -11,7 +11,7 @@ solutions from AOC. You can find all my solutions on
 
 A small programming technique tidbit I hadn't encountered before: when finding solutions to strict
 inequalities (e.g. find the smallest integer `x > y` where `y` is floating point), if your program
-solves for a floating point `x == y` \[[^1]\], how do you find the next greater integer than `x` to
+solves for a floating point `x == y`[^1], how do you find the next greater integer than `x` to
 satisfy the inequality?
 
 My first instinct was that it's simply `ceil(x)`, but that's actually wrong --- if `x` is already an

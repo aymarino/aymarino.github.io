@@ -7,7 +7,7 @@ I like to use VS Code for note-taking, and have scripts to help facilitate my wo
 I have a script, shamelessly inspired by [Obsidian](http://obsidian.md), to create and open that
 day's "daily note", which is handy to quickly dump some scratch work or TODOs that I haven't
 organized yet, and create a loose journal of what I was working on that day. The script itself is
-simple \[[^1]\]:
+simple[^1]:
 
 ```sh
 #!/usr/bin/env bash
@@ -115,7 +115,7 @@ rm -rf $SCRIPT_DIR
 
 The [gist](https://gist.github.com/aymarino/8ba8b2ef7d065ebeffc71b71783013e4) this script points to
 will merge local `keybindings.json` file with the settings in the global one, mercifully easy in
-Python \[[^2]\]:
+Python[^2]:
 
 ```python
 #!/usr/bin/env python3

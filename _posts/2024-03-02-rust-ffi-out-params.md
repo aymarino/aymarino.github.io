@@ -18,7 +18,7 @@ Building and maintaining Rust wrappers of C libraries typically follows two step
 1. Build a `-sys` crate that generates and exports bindings from the function and type declarations
    in the library headers.
 
-   There are many great tutorials \[[^1]\] for using `bindgen` or other tools to build such crates.
+   There are many great tutorials[^1] for using `bindgen` or other tools to build such crates.
 
    But, these only generate _direct_ Rust translations of the C function signatures and types and
    links against the library. So, this allows you to call the library functions from Rust, but it
@@ -46,7 +46,7 @@ Building and maintaining Rust wrappers of C libraries typically follows two step
    of the underlying objects, and so on. Essentially, we are writing C with Rust syntax.
 
    If you were going to write a Rust application against this library, it would not only be painful
-   to write, but also not much safer than simply using C \[[^2]\].
+   to write, but also not much safer than simply using C[^2].
 
    So there's a second step:
 
@@ -180,7 +180,7 @@ macro_rules! unsafe_foo_result {
 ```
 
 This gives an easier way to make calls to FFI functions that don't return anything but the error
-code \[[^3]\]:
+code[^3]:
 
 ```rust
 unsafe_foo_result!((), ffi::foo_execute_operation(operation_handle))?;

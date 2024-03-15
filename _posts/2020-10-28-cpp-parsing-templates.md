@@ -108,7 +108,7 @@ Similarly, we proceed for `C`: name lookup finds a template name, so `<` starts 
 argument list, with single argument `sizeof(yy)`.
 
 In `sizeof(yy)`, `yy` resolves to the global variable `yy` (names do not come into scope until after
-their complete declaration \[[^1]\]). So, `sizeof(yy) == sizeof(Y<0>)`.
+their complete declaration[^1]). So, `sizeof(yy) == sizeof(Y<0>)`.
 
 `C<sizeof(yy)>` will be an instantiation of the second explicit specialization of `C` (referring to
 the complete snippet). So, lookup of `C<sizeof(yy)>::Data` finds the nested class defined in that

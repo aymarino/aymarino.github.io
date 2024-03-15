@@ -45,7 +45,7 @@ fn main() {
 There are other variations on this you could opt for, such as making the cache a global or
 function-scope static singleton so that the caller doesn't have to provide it, but this is about as
 simple as you can get, and it's not very ergonomic for either writing the function logic or for the
-caller \[[^1]\].
+caller[^1].
 
 I learned though, of the [cached](https://docs.rs/cached/latest/cached/) crate, which provides a
 drop-in macro like Python's decorator to add caching behavior to expensive pure functions:

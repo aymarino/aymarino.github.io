@@ -11,7 +11,7 @@ be client-side, it's usually not easy to host any private content on them withou
 backend.
 
 There are workarounds for this, such as putting the site behind an authentication layer using HTTP
-Basic Auth. [[^1]] There are many existing
+Basic Auth[^1]. There are many existing
 [tutorials](https://medium.com/hackernoon/serverless-password-protecting-a-static-website-in-an-aws-s3-bucket-bfaaa01b8666)
 for implementing this, but the general idea is to only grant access to the underlying static
 resource (S3 bucket, in the AWS space) to a Cloudfront CDN distribution. The CDN invokes a

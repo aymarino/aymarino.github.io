@@ -42,7 +42,7 @@ can use instead, which derives the polygon area from the coordinates of its vert
 ### Shoelace formula
 
 The [shoelace formula](https://en.wikipedia.org/wiki/Shoelace_formula) gives the area of a simple
-polygon (read: a single closed shape with no intersecting edges) \[[^1]\]:
+polygon (read: a single closed shape with no intersecting edges)[^1]:
 
 <!-- prettier-ignore-start -->
 
@@ -64,7 +64,7 @@ where \\(a\\), \\(b\\) are the lengths of the parallel sides, as usual.
 <!-- prettier-ignore-start -->
 These trapezoid areas _add_ to the polygon area when \\(x_i > x_{i+1}\\) (i.e., traveling from
 \\(P_i \rightarrow P_{i+1} \\) is to the left), and _subtract_ from the area when traveling to the
-right \[[^2]\], as illustrated via Wikipedia, below:
+right[^2], as illustrated via Wikipedia, below:
 <!-- prettier-ignore-end -->
 
 [![Wikipedia illustration of the shoelace algorithm](https://upload.wikimedia.org/wikipedia/commons/8/8f/Trapez-formel-prinz.svg)](https://en.wikipedia.org/wiki/Shoelace_formula#Trapezoid_formula_2)
@@ -100,8 +100,9 @@ points \\(b\\) and interior points \\(i\\), called _Pick's theorem_:
 
 $$ A = i + \frac{b}{2} - 1 $$
 
-In AoC day 18, we can calculate \\(A\\) (using the Shoelace algorithm) and trivially compute \\(b\\)
-\[[^3]\], and the answer is the total number of points touched or enclosed by the path, \\(b + i\\):
+In AoC day 18, we can calculate \\(A\\) (using the Shoelace algorithm) and trivially compute
+\\(b\\)[^3], and the answer is the total number of points touched or enclosed by the path, \\(b +
+i\\):
 
 $$
 \begin{aligned}

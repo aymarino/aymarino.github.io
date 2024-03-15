@@ -104,6 +104,19 @@ strong, b {
   font-weight: bold;
 }
 
+sup {
+  font-size: 75%;
+  vertical-align: super;
+}
+
+.footnote:before {
+  content: "[";
+}
+
+.footnote:after {
+  content: "]";
+}
+
 img {
   max-width: 100%;
 

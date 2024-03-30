@@ -15,6 +15,13 @@ h1 > code {
   font-size: inherit;
 }
 
+.posts-title {
+  code {
+    border: inherit;
+    font-size: inherit;
+  }
+}
+
 pre {
   padding: 8px 12px;
   overflow-x: auto;

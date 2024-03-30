@@ -163,6 +163,4 @@ and returns void. Hence, this statement is a function call expression to that op
 Part of the beauty is that, since the `operator >` returns `void` (as opposed to something typical,
 say `bool`), there's not even the possibility of a compiler warning for the discarded return value.
 
-<hr/>
-
 [^1]: But before their optional initializer.

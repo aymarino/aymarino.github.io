@@ -20,8 +20,6 @@ guarantee that the result is 1. greater than `y`, and 2. an integer.
 
 Similarly when you need integral `x < y`, you can do `ceil(x) - 1`.
 
-<hr/>
-
 [^1]:
     to make it more concrete, the AoC problem involved solving for the roots of a quadratic
     equation, and

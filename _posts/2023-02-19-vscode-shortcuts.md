@@ -155,8 +155,6 @@ with open(args.dest, 'w+') as dest_file:
 
 I use a similar script to update my global VS Code configuration settings on new machines as well.
 
-<hr/>
-
 [^1]:
     Note that all shell scripts in this post are macOS-specific. Where VS Code will store the global
     configuration files will be different on Linux or Windows.

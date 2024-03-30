@@ -335,8 +335,6 @@ then redirecting:
 The complete code for the Lambda handlers, and example scripts for how I deploy them, can be found
 on Github: [aymarino/static-site-login](https://github.com/aymarino/static-site-login).
 
-<hr/>
-
 [^1]:
     Since I first started doing this, another [tool](https://github.com/robinmoisson/staticrypt) has
     come up to serve the full site content encrypted, and prompt client-side for a decryption key.

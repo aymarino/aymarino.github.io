@@ -115,8 +115,6 @@ My solution to the Advent of Code problem, written in Rust, is available
 [here](https://github.com/aymarino/advent-of-code-2023/blob/main/src/day18.rs#L15-L48) (link
 highlights the application of Shoelace and Pick's theorem).
 
-<hr/>
-
 <!-- prettier-ignore-start -->
 [^1]:
     The shoelace formula is so-called because of its alternate form where each term in the summation

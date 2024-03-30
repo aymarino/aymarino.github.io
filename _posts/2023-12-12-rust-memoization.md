@@ -72,8 +72,6 @@ to do this yourself. It's fairly customizable -- for the AoC problem, for exampl
 customize the key for the function input and it allowed that
 [pretty easily](https://github.com/aymarino/advent-of-code-2023/blob/main/src/day12.rs#L16-L17).
 
-<hr/>
-
 [^1]:
     Needing to carry the mutable ref to the `memo` object through the (potentially
     [much more complicated](https://github.com/aymarino/advent-of-code-2023/blob/main/src/day12.rs#L32-L52))

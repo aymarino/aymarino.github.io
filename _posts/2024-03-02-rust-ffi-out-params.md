@@ -226,8 +226,6 @@ let object_handle = unsafe_foo_lib_ffi!(
 
 for each FFI callsite.
 
-<hr/>
-
 [^1]:
     Check out this [blog post](https://kornel.ski/rust-sys-crate) from Kornel Lesiński, or this more
     interactive/real-time [video tutorial](https://www.youtube.com/watch?v=pePqWoTnSmQ) from Jon

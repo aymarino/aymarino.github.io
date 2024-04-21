@@ -4,7 +4,6 @@
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
     {% include meta.html %}
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-lightbox@2.1.0/dist/simpleLightbox.min.css">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}/feed.xml" />
     <link rel="canonical" href="{{ page.url | absolute_url }}" />
@@ -37,6 +36,28 @@
 
     <div id="main" role="main" class="container">
       {{ content }}
+    </div>
+
+    <div class="wrapper-footer">
+      <footer class="container footer">
+        <div class="footer-left">
+          <p>
+            <a href="{{ site.baseurl }}/">{{ site.title }}</a><br>
+            Blogging about anything I find interesting. Views expressed here are my own.
+          </p>
+        </div>
+        <div class="footer-right">
+          <a href="https://github.com/{{ site.links.github }}" title="GitHub">
+            {%- include social-item.html key = 'github' -%}
+          </a>
+          <a href="https://www.linkedin.com/in/{{ site.links.linkedin }}" title="LinkedIn">
+            {%- include social-item.html key = 'linkedin' -%}
+          </a>
+          <a href="/feed.xml" target="_blank" title="RSS feed">
+            {%- include social-item.html key = 'rss' -%}
+          </a>
+        </div>
+      </footer>
     </div>
 
     {% include analytics.html %}

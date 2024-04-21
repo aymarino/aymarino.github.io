@@ -18,6 +18,10 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   background: $white;
   font: 16px/1.4 $helveticaNeue;
   color: $darkGray;
@@ -234,6 +238,10 @@ nav {
 // .main
 //
 
+#main {
+  flex: 1;
+}
+
 .posts > .post {
   display: grid;
   grid-template-areas: 'date title' 'b tags';
@@ -301,6 +309,34 @@ nav {
   display: inline-block;
   fill: currentColor;
   vertical-align: text-bottom;
+}
+
+.wrapper-footer {
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center; // Center the columns horizontally
+  align-items: center;     // Center the columns vertically
+
+  font-family: $helveticaNeue;
+  font-size: 90%;
+  color: $gray;
+
+  a {
+    color: $darkGray;
+  }
+}
+
+.footer-left {
+  flex: 2;
+}
+
+.footer-right {
+  flex: 1;
+  text-align: right;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS

@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="page">
+  <div class="title">
+    <h1>{{ .Title }}</h1>
+  </div>
+
+  <div class="entry">
+    {{ $categories := .Site.Taxonomies.categories.ByCount }}
+    {{ range $categories }}
+      {{ $category := .Name }}
+      <h3>
+        {{ partial "tag.html" . }}
+        {{ $category }}
+      </h3>
+      <div id="#{{ $category | urlize }}"></div>
+      <a name="{{ $category | urlize }}"></a>
+      {{ range $.Site.Taxonomies.categories.Get $category }}
+        <ul>
+          <li>
+            <span class="date">{{ .Date.Format "Jan 02 2006" }}</span> &mdash;
+            <a href="{{ .RelPermalink }}">
+              {{ .Title | markdownify }}
+            </a>
+          </li>
+        </ul>
+      {{ end }}
+    {{ end }}
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ if .Title }}{{ .Title }} – {{ end }}{{ .Site.Title }}</title>
+    {{ partial "meta.html" . }}
+
+    {{ $style := resources.Get "scss/style.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+
+    {{ if .Param "math" }}
+      {{ partialCached "math.html" . }}
+    {{ end }}
+    {{ if .Param "mermaid" }}
+      {{ partialCached "mermaid.html" . }}
+    {{ end }}
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="masthead clearfix">
+
+        <div class="site-info">
+          <h1 class="site-name"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+        </div>
+
+        <nav>
+          <a href="{{ "about" | relURL }}">About</a>
+          <a href="{{ "gallery" | relURL }}">Gallery</a>
+          <a href="https://github.com/{{ .Site.Params.links.github }}" title="GitHub">
+            {{ partial "social-item.html" (dict "key" "github") }}
+          </a>
+          <a href="https://www.linkedin.com/in/{{ .Site.Params.links.linkedin }}" title="LinkedIn">
+            {{ partial "social-item.html" (dict "key" "linkedin") }}
+          </a>
+          <a href="/index.xml" target="_blank" title="RSS feed">
+            {{ partial "social-item.html" (dict "key" "rss") }}
+          </a>
+        </nav>
+      </header>
+    </div>
+
+    <div id="main" role="main" class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+
+    <div class="wrapper-footer">
+      <footer class="container footer">
+        <div class="footer-left">
+          <p>
+            <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a><br>
+            Blogging about anything I find interesting. Views expressed here are my own.
+          </p>
+        </div>
+        <div class="footer-right">
+          <a href="https://github.com/{{ .Site.Params.links.github }}" title="GitHub">
+            {{ partial "social-item.html" (dict "key" "github") }}
+          </a>
+          <a href="https://www.linkedin.com/in/{{ .Site.Params.links.linkedin }}" title="LinkedIn">
+            {{ partial "social-item.html" (dict "key" "linkedin") }}
+          </a>
+          <a href="/index.xml" target="_blank" title="RSS feed">
+            {{ partial "social-item.html" (dict "key" "rss") }}
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    {{ partial "analytics.html" . }}
+  </body>
+</html>

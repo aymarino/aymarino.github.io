@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="posts">
+  {{ $section := .Section }}
+  {{ if eq $section "" }}
+    {{ $section = "posts" }}
+  {{ end }}
+  {{ range where .Site.RegularPages "Section" $section }}
+    <article class="post">
+      <span class="date">{{ .Date.Format "Jan 02 2006" }}</span>
+      <span class="posts-title">
+        <a href="{{ .RelPermalink }}">
+          {{ .Title | markdownify }}
+        </a>
+      </span>
+      {{ if .Params.categories }}
+        <span class="posts-tags">
+        {{ range .Params.categories }}
+          <code>
+            {{ partial "tag.html" . }}
+            <a href="{{ "categories/" | relURL }}#{{ . | urlize }}">{{ . }}</a>
+          </code>
+        {{ end }}
+        </span>
+      {{ end }}
+    </article>
+  {{ end }}
+</div>
+{{ end }}

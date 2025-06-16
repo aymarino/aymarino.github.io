@@ -1,0 +1,16 @@
+{{ $thumb_suffix := "-thumb." }}
+{{ $gallery_path := "/images/" }}
+{{ $gallery_id := $.Page.Params.gallery_id }}
+{{ $img := .Get "img" }}
+{{ $caption := .Get "caption" | default "" }}
+
+{{ $gallery_path = print $gallery_path $gallery_id "/" }}
+{{ $img_path := print $gallery_path $img }}
+{{ $basename := index (split $img ".") 0 }}
+{{ $ext := index (split $img ".") 1 }}
+{{ $thumb_filename := print $basename $thumb_suffix $ext }}
+{{ $thumb_path := print $gallery_path $thumb_filename }}
+
+<a href="{{ $img_path }}" title="{{ $caption }}">
+  <img src="{{ $thumb_path }}"/>
+</a>

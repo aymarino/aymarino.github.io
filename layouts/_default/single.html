@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="post post-body">
+  <div class="title">
+    <h1>{{ .Title | markdownify }}</h1>
+    {{ if .Date }}
+      <div class="date">{{ .Date.Format "January 2, 2006" }}</div>
+    {{ end }}
+    {{ if .Params.categories }}
+      <div class="post-categories">
+        {{ range .Params.categories }}
+          <code>
+            {{ partial "tag.html" . }}
+            <a href="{{ "categories/" | relURL }}#{{ . | urlize }}">{{ . }}</a>
+          </code>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+
+  <div class="entry">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

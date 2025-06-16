@@ -1,0 +1,26 @@
+baseURL = 'https://aymarino.github.io/'
+languageCode = 'en-us'
+title = 'Andrew Marino — Blog'
+
+[params]
+  googleAnalytics = "G-04Q7DJCH67"
+  [params.links]
+    github = "aymarino"
+    linkedin = "andrew-marino-54a143ba"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]

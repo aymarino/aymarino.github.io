@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ if .Title }}{{ .Title }} – {{ end }}{{ .Site.Title }}</title>
+    <title>
+      {{ if .IsHome }}
+        {{ .Site.Title }}
+      {{ else }}
+        {{ .Title }} – {{ .Site.Title }}
+      {{ end }}
+    </title>
     {{ partial "meta.html" . }}
 
     {{ $style := resources.Get "scss/style.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
